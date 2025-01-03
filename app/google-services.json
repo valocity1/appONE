@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "137924933125",
+    "project_id": "appone-3eb3a",
+    "storage_bucket": "appone-3eb3a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:137924933125:android:9d19f488d1c44762060e6c",
+        "android_client_info": {
+          "package_name": "com.itidol.appone"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCp5xKRSB8KYt0bjyWtkdUTyMgUQMt1oTg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

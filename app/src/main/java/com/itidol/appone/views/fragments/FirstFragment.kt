@@ -24,9 +24,9 @@ class FirstFragment : Fragment() {
         binding.RegisterButtonTextView.setOnClickListener {
             (activity as MainActivity).getFragments(RegisterFragment())
         }
-        binding.continueGuestText.setOnClickListener {
-            (activity as MainActivity).getFragments(BlankFragment())
-        }
+//        binding.continueGuestText.setOnClickListener {
+//            (activity as MainActivity).getFragments(BlankFragment())
+//        }
 
 
         return binding.root

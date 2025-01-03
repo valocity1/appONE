@@ -5,12 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuth
 import com.itidol.appone.R
 import com.itidol.appone.databinding.FragmentRegisterBinding
 import com.itidol.appone.views.activities.MainActivity
+import com.itidol.appone.views.preferences.UserSharedPreferences
 
 class RegisterFragment : Fragment() {
     lateinit var binding: FragmentRegisterBinding
+    lateinit var firebaseAuth: FirebaseAuth
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,7 +36,61 @@ class RegisterFragment : Fragment() {
         binding.registerImageViewBack.setOnClickListener {
             requireActivity().supportFragmentManager.popBackStack()
         }
+        firebaseAuth = FirebaseAuth.getInstance()
+        //Register Button
+        binding.registerButtonLoginFragment.setOnClickListener {
+            val username = binding.userNameRegisterFragment.text.toString()
+            val email = binding.emailRegisterFragment.text.toString()
+            val password = binding.passwordRegisterFragment.text.toString()
+            val confirmPassword = binding.confirmPasswordRegisterFragment.text.toString()
 
+            if (username.isEmpty()) {
+                binding.userNameRegisterFragment.error = "Username is required"
+            } else if (email.isEmpty()) {
+                binding.emailRegisterFragment.error = "Email is required"
+            } else if (password.isEmpty()) {
+                binding.passwordRegisterFragment.error = "Password is required"
+            } else if (confirmPassword.isEmpty()) {
+                binding.confirmPasswordRegisterFragment.error = "Confirm Password is required"
+            } else if (password != confirmPassword) {
+                binding.confirmPasswordRegisterFragment.error = "Password does not match"
+            } else {
+                binding.userNameRegisterFragment.error = null
+                binding.emailRegisterFragment.error = null
+                binding.passwordRegisterFragment.error = null
+                binding.confirmPasswordRegisterFragment.error = null
+                val userSharedPreferences = UserSharedPreferences(requireActivity())
+                userSharedPreferences.setUserLoginCredentials(username, email, confirmPassword)
+                createUser(email, confirmPassword)
+            }
+        }
         return binding.root
+    }
+
+    fun createUser(email: String, password: String) {
+        firebaseAuth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(requireActivity(), object : OnCompleteListener<AuthResult> {
+                override fun onComplete(task: Task<AuthResult>) {
+                    if (task.isSuccessful) {
+                        val firebaseUser = firebaseAuth.currentUser
+                        firebaseUser!!.sendEmailVerification().addOnSuccessListener {
+                            Toast.makeText(
+                                requireActivity(),
+                                "Email Verification link sent on Registered email, Please Verify Before Login! ",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }.addOnFailureListener {
+                            Toast.makeText(
+                                requireActivity(),
+                                "" + task.exception!!.message,
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+
+                    } else {
+                        (activity as MainActivity).getFragments(BlankFragment())
+                    }
+                }
+            })
     }
 }
