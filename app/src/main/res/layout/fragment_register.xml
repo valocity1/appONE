@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".views.fragments.LoginFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/registerImageViewBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/image_bg_black_stroke"
+        android:elevation="5dp"
+        android:padding="5dp"
+        android:src="@drawable/back_light_svgrepo_com"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="15dp"
+        android:fontFamily="@font/alata"
+        android:text="Hello! Register to get started"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/registerImageViewBack"
+        app:layout_constraintTop_toBottomOf="@+id/registerImageViewBack" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInputLayoutLogin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textColorHint="#1e232c"
+        app:boxStrokeColor="#1e232c"
+        app:boxStrokeWidth="1dp"
+        app:boxStrokeWidthFocused="2dp"
+        app:hintTextColor="#1e232c"
+        app:layout_constraintEnd_toEndOf="@id/textView2"
+        app:layout_constraintStart_toStartOf="@+id/registerImageViewBack"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/userNameRegisterFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/alata"
+            android:hint="Username"
+            android:inputType="textAutoComplete"
+            android:textColor="#1e232c" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColorHint="#1e232c"
+        app:boxStrokeColor="#1e232c"
+        app:boxStrokeWidth="1dp"
+        app:boxStrokeWidthFocused="2dp"
+        app:hintTextColor="#1e232c"
+        app:layout_constraintEnd_toEndOf="@id/textView2"
+        app:layout_constraintStart_toStartOf="@+id/registerImageViewBack"
+        app:layout_constraintTop_toBottomOf="@+id/txtInputLayoutLogin">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailRegisterFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/alata"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:textColor="#1e232c" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordtextInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColorHint="#1e232c"
+        app:boxStrokeColor="#1e232c"
+        app:boxStrokeWidth="1dp"
+        app:boxStrokeWidthFocused="2dp"
+        app:hintTextColor="#1e232c"
+        app:layout_constraintEnd_toEndOf="@id/textView2"
+        app:layout_constraintStart_toStartOf="@+id/registerImageViewBack"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="#1e232c">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordRegisterFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/alata"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textColor="#1e232c" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/confirmPasswordtextInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColorHint="#1e232c"
+        app:boxStrokeColor="#1e232c"
+        app:boxStrokeWidth="1dp"
+        app:boxStrokeWidthFocused="2dp"
+        app:hintTextColor="#1e232c"
+        app:layout_constraintEnd_toEndOf="@id/textView2"
+        app:layout_constraintStart_toStartOf="@+id/registerImageViewBack"
+        app:layout_constraintTop_toBottomOf="@+id/passwordtextInputLayout"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="#1e232c">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/confirmPasswordRegisterFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/alata"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:textColor="#1e232c" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/registerButtonLoginFragment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/button_bg_black"
+        android:backgroundTint="@color/black"
+        android:fontFamily="@font/alata"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Register"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/confirmPasswordtextInputLayout" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="50dp"
+        android:background="#B9B9B9"
+        app:layout_constraintEnd_toEndOf="@id/registerButtonLoginFragment"
+        app:layout_constraintStart_toStartOf="@id/registerButtonLoginFragment"
+        app:layout_constraintTop_toBottomOf="@id/registerButtonLoginFragment" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:fontFamily="@font/alata"
+        android:padding="10dp"
+        android:text="Or login with"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="#070707"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/view" />
+
+
+            <View
+                android:id="@+id/facebookUserRegisterFragment"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="70dp"
+                app:layout_constraintBottom_toTopOf="@+id/textView"
+                app:layout_constraintEnd_toStartOf="@+id/googleUserRegisterFragment"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="3dp"
+        android:background="@drawable/image_bg_black_stroke"
+        android:src="@drawable/_023_facebook_icon"
+        app:layout_constraintStart_toStartOf="@id/facebookUserRegisterFragment"
+        app:layout_constraintEnd_toEndOf="@id/facebookUserRegisterFragment"
+        app:layout_constraintTop_toTopOf="@id/facebookUserRegisterFragment"
+        app:layout_constraintBottom_toBottomOf="@id/facebookUserRegisterFragment"
+        />
+
+    <View
+        android:id="@+id/googleUserRegisterFragment"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/facebookUserRegisterFragment"
+        app:layout_constraintTop_toTopOf="@id/facebookUserRegisterFragment" />
+
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="3dp"
+        android:background="@drawable/image_bg_black_stroke"
+        android:src="@drawable/google_color_svgrepo_com"
+        app:layout_constraintStart_toStartOf="@id/googleUserRegisterFragment"
+        app:layout_constraintEnd_toEndOf="@id/googleUserRegisterFragment"
+        app:layout_constraintTop_toTopOf="@id/googleUserRegisterFragment"
+        app:layout_constraintBottom_toBottomOf="@id/googleUserRegisterFragment"
+        />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/alata"
+        android:text="Already have an account?"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/loginNowTxtloginFragment"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/view"
+       />
+
+    <TextView
+        android:id="@+id/loginNowTxtloginFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/alata"
+        android:paddingStart="5dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="10dp"
+        android:text="Login"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="#009688"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
