@@ -177,7 +177,7 @@
         android:layout_height="0dp"
         android:padding="3dp"
         android:background="@drawable/image_bg_black_stroke"
-        android:src="@drawable/_023_facebook_icon"
+        android:src="@drawable/phone_svgrepo_com"
         app:layout_constraintStart_toStartOf="@id/facebookUserLoginFragment"
         app:layout_constraintEnd_toEndOf="@id/facebookUserLoginFragment"
         app:layout_constraintTop_toTopOf="@id/facebookUserLoginFragment"

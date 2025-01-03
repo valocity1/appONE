@@ -1,6 +1,6 @@
-package com.itidol.appone.views.utils
+package com.itidol.appone.utils
 
-import com.itidol.appone.views.constants.Constants
+import com.itidol.appone.constants.Constants
 import java.util.regex.Pattern
 
 class Java_Regex {

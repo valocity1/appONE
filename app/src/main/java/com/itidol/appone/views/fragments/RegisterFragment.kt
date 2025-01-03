@@ -13,7 +13,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.itidol.appone.R
 import com.itidol.appone.databinding.FragmentRegisterBinding
 import com.itidol.appone.views.activities.MainActivity
-import com.itidol.appone.views.preferences.UserSharedPreferences
+import com.itidol.appone.preferences.UserSharedPreferences
+import com.itidol.appone.utils.Java_Regex
 
 class RegisterFragment : Fragment() {
     lateinit var binding: FragmentRegisterBinding
@@ -46,12 +47,17 @@ class RegisterFragment : Fragment() {
 
             if (username.isEmpty()) {
                 binding.userNameRegisterFragment.error = "Username is required"
-            } else if (email.isEmpty()) {
-                binding.emailRegisterFragment.error = "Email is required"
-            } else if (password.isEmpty()) {
-                binding.passwordRegisterFragment.error = "Password is required"
-            } else if (confirmPassword.isEmpty()) {
-                binding.confirmPasswordRegisterFragment.error = "Confirm Password is required"
+            }   else if (!Java_Regex.emailValidator(email)) {
+            binding.emailRegisterFragment.setError("Email Doesn't Match Requirement");
+        } else if (!Java_Regex.passwordValidator(password)) {
+            binding.passwordRegisterFragment.setError(
+                "Password must:\n" +
+                        "- Be at least 8 characters long\n" +
+                        "- Contain at least one uppercase letter\n" +
+                        "- Contain at least one lowercase letter\n" +
+                        "- Contain at least one digit\n" +
+                        "- Contain at least one special character (@$!%*?&)"
+            )
             } else if (password != confirmPassword) {
                 binding.confirmPasswordRegisterFragment.error = "Password does not match"
             } else {
@@ -59,11 +65,17 @@ class RegisterFragment : Fragment() {
                 binding.emailRegisterFragment.error = null
                 binding.passwordRegisterFragment.error = null
                 binding.confirmPasswordRegisterFragment.error = null
+                //save user credentials to shared preferences
                 val userSharedPreferences = UserSharedPreferences(requireActivity())
                 userSharedPreferences.setUserLoginCredentials(username, email, confirmPassword)
+                //save user credentials to firebase
                 createUser(email, confirmPassword)
             }
         }
+        binding.facebookUserRegisterFragment.setOnClickListener{
+            (activity as MainActivity).getFragments(PhoneAuthFragment())
+        }
+
         return binding.root
     }
 

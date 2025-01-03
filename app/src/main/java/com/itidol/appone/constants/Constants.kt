@@ -1,4 +1,4 @@
-package com.itidol.appone.views.constants
+package com.itidol.appone.constants
 
 class Constants{
     companion object{

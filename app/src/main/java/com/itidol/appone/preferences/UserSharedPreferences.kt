@@ -1,7 +1,7 @@
-package com.itidol.appone.views.preferences
+package com.itidol.appone.preferences
 
 import android.content.Context
-import com.itidol.appone.views.constants.Constants
+import com.itidol.appone.constants.Constants
 
 class UserSharedPreferences(context: Context)  {
     val preferences = context.getSharedPreferences("UserInfo", Context.MODE_PRIVATE)

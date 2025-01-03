@@ -51,4 +51,14 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+
+//    //LottieFiles
+//    implementation("com.airbnb.android:lottie:6.6.2")
+//
+//    //COUNTRY CODE PICKER
+//    implementation("com.hbb20:ccp:2.5.0")
+//
+////    //PIN VIEW
+//    implementation("io.github.chaosleung:pinview:1.4.4")
 }

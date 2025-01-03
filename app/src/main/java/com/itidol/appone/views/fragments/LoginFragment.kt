@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.itidol.appone.R
 import com.itidol.appone.databinding.FragmentLoginBinding
 import com.itidol.appone.views.activities.MainActivity
+import com.itidol.appone.utils.Java_Regex
 
 class LoginFragment : Fragment() {
 
@@ -57,17 +58,28 @@ class LoginFragment : Fragment() {
             val email = binding.userEmailLoginFragment.text.toString()
             val password = binding.passwordLoginFragment.text.toString()
 
-            if (email.isEmpty()) {
-                binding.userEmailLoginFragment.error = "Email is required"
-            } else if (password.isEmpty()) {
-                binding.passwordLoginFragment.error = "Password is required"
-            }else{
+            if (!Java_Regex.emailValidator(email)) {
+                binding.userEmailLoginFragment.setError("Email Doesn't Match Requirement");
+            } else if (!Java_Regex.passwordValidator(password)) {
+                binding.passwordLoginFragment.setError(
+                    "Password must:\n" +
+                            "- Be at least 8 characters long\n" +
+                            "- Contain at least one uppercase letter\n" +
+                            "- Contain at least one lowercase letter\n" +
+                            "- Contain at least one digit\n" +
+                            "- Contain at least one special character (@$!%*?&)"
+                )
+            } else {
                 binding.userEmailLoginFragment.error = null
                 binding.passwordLoginFragment.error = null
                 loginWithCredentials(email, password)
-
             }
         }
+
+        binding.facebookUserLoginFragment.setOnClickListener{
+            (activity as MainActivity).getFragments(PhoneAuthFragment())
+        }
+
 
 
         return binding.root
@@ -77,8 +89,9 @@ class LoginFragment : Fragment() {
         firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(requireActivity(), object : OnCompleteListener<AuthResult> {
                 override fun onComplete(task: Task<AuthResult>) {
-                    if(task.isSuccessful){
-                        Toast.makeText(requireActivity(), "Login Successful", Toast.LENGTH_SHORT).show()
+                    if (task.isSuccessful) {
+                        Toast.makeText(requireActivity(), "Login Successful", Toast.LENGTH_SHORT)
+                            .show()
                         (activity as MainActivity).getFragments(BlankFragment())
                     }
                 }

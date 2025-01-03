@@ -12,7 +12,20 @@
           "package_name": "com.itidol.appone"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "137924933125-jr54vfibhpi7jca0nngq70bti3k2apul.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.itidol.appone",
+            "certificate_hash": "c4561c859d1d0f90b6be53bbe902b95b6fa16a12"
+          }
+        },
+        {
+          "client_id": "137924933125-dru0nja17bufusrlertofq0ruauqcqam.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCp5xKRSB8KYt0bjyWtkdUTyMgUQMt1oTg"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "137924933125-dru0nja17bufusrlertofq0ruauqcqam.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
