@@ -21,22 +21,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-//        if(savedInstanceState!=null){
-//            val currentFragment = savedInstanceState.getInt("currentFragment")
-//            val fragment = supportFragmentManager.findFragmentById(currentFragment)
-//            if(currentFragment!=null){
-//                supportFragmentManager.beginTransaction()
-//                    .replace(binding.framelayout.id, fragment!!).commit()
-//            }
-//        }else{
-//            supportFragmentManager.beginTransaction().replace(binding.framelayout.id, FirstFragment()).commit()
-//        }
+        if(savedInstanceState!=null){
+         getFragments(FirstFragment())
+        }
         //Attach First Fragment
         val attachedFragment = supportFragmentManager.beginTransaction()
         attachedFragment.replace(binding.framelayout.id, FirstFragment()).commit()
@@ -56,6 +50,15 @@ class MainActivity : AppCompatActivity() {
         fragment.replace(binding.framelayout.id, fragments)
         fragment.addToBackStack(null)
         fragment.commit()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        val currentFragment = supportFragmentManager.findFragmentById(binding.framelayout.id)
+        if(currentFragment!=null){
+            supportFragmentManager.putFragment(outState, "currentFragment", currentFragment)
+        }
     }
 
 //    override fun onSaveInstanceState(outState: Bundle) {

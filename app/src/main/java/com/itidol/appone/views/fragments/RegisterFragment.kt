@@ -19,6 +19,18 @@ import com.itidol.appone.utils.Java_Regex
 class RegisterFragment : Fragment() {
     lateinit var binding: FragmentRegisterBinding
     lateinit var firebaseAuth: FirebaseAuth
+
+//    lateinit var googleSignInClient: GoogleSignInClient
+
+//    private val googleSignInLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+//        result->
+//        if(result.resultCode==AppCompatActivity.RESULT_OK){
+//            result.data?.let {data->
+//                val task = googleS
+//            }
+//        }
+//    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
